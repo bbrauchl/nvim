@@ -1,4 +1,3 @@
-
 local M = {}
 
 M.load = function(leader)
@@ -7,7 +6,11 @@ M.load = function(leader)
 end
 
 M.load_config = function()
-  require('config.vimrc')
+  require 'config.vimrc'
+end
+
+M.load_autocommands = function()
+  require 'config.autocommands'
 end
 
 M.set_leader = function(leader)
