@@ -1,6 +1,6 @@
 local lazy_config = {
   -- defaults = { lazy = true },
-  -- install = { colorscheme = { "vscode" } },
+  -- install = { colorscheme = { 'vscode' } },
 
   ui = {
     icons = {
@@ -56,4 +56,3 @@ local lazy_config = {
 }
 
 return lazy_config
-
