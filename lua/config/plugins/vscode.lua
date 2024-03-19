@@ -20,15 +20,19 @@ local vscode_config = {
     },
 
     -- Override highlight groups (see ./lua/vscode/theme.lua)
-    group_overrides = {
-      -- this supports the same val table as vim.api.nvim_set_hl
-      -- use colors from this colorscheme by requiring vscode.colors!
-      -- Cursor = { fg=require('vscode').get_colors().vscDarkBlue, bg=requrie('vscode').get_colors().vscLightGreen, bold=true },
-    },
+    --group_overrides = {
+    --  this supports the same val table as vim.api.nvim_set_hl
+    --  use colors from this colorscheme by requiring vscode.colors!
+    --  Cursor = {
+    --    fg = require('vscode.colors').get_colors().vscDarkBlue,
+    --    bg = require('vscode.colors').get_colors().vscLightGreen,
+    --    bold = true,
+    --  },
+    --},
   },
   config = function(_, opts)
     require('vscode').setup(opts)
-    require('vscode').load()
+    require('vscode').load('dark')
   end,
 }
 
