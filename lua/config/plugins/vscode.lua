@@ -3,7 +3,7 @@ local vscode_config = {
   priority = 1000, -- Make sure to load this before all the other start plugins.
   opts = {
     -- Alternatively set style in setup
-    -- style = 'light'
+    style = 'dark',
 
     -- Enable transparent background
     transparent = true,

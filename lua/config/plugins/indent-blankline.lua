@@ -23,6 +23,9 @@ local indent_blankline_config = {
   -- Enable `lukas-reineke/indent-blankline.nvim`
   -- See `:help ibl`
   enabled = true,
+  dependencies = {
+    'hiphish/rainbow-delimiters.nvim',
+  },
   event = 'BufReadPre',
   main = 'ibl',
   config = function()
