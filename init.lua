@@ -160,7 +160,7 @@ require('lazy').setup(
   require('utils').plugins.assemble_lazy_config()
 )
 
-require('utils').mappings.load_all_plugin_general_mappings()
+-- require('utils').mappings.load_all_plugin_general_mappings()
 
 -- The line beneath this is called `modeline`. See `:help modeline`
 -- vim: ts=2 sts=2 sw=2 et
