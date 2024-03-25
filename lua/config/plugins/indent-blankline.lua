@@ -68,6 +68,11 @@ local indent_blankline_config = {
           'terminal',
         },
       },
+      indent = {
+
+        char = '▎',
+        tab_char = '▎',
+      },
       whitespace = {
         remove_blankline_trail = true,
       },
