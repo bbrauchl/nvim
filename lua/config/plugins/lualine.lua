@@ -3,7 +3,15 @@ local lualine_config = {
   -- Set lualine as statusline
   'nvim-lualine/lualine.nvim',
   -- See `:help lualine.txt`
+  dependencies = {
+    'nvim-tree/nvim-web-devicons',
+  },
+  enabled = true,
   opts = {
+    extensions = {
+      'nvim-tree',
+      'nvim-dap-ui',
+    },
     options = {
       icons_enabled = true,
       theme = 'auto',
@@ -41,7 +49,6 @@ local lualine_config = {
     tabline = {},
     winbar = {},
     inactive_winbar = {},
-    extensions = {}
   },
 }
 
