@@ -29,7 +29,6 @@ M.general_mappings = {
     -- [[ Misc/ease-of-use keymaps ]]
     [';'] = { ':', 'enter command mode', opts = { nowait = true }},
     ["<Esc>"] = { "<cmd> noh <CR>", "Clear highlights" },
-    ["<Space>"] = { "<Nop>", opts = { silent = true }},
     -- line numbers
     ["<leader>n"] = { "<cmd> set nu! <CR>", "Toggle line number" },
     ["<leader>rn"] = { "<cmd> set rnu! <CR>", "Toggle relative number" },
