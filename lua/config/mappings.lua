@@ -398,6 +398,74 @@ M.plugin_mappings = {
       },
     },
   },
+
+  gitsigns = {
+    general = {
+
+    },
+    events = {
+      on_attach = {
+        n = {
+          ['<leader>hs'] = {
+            function() require('gitsigns').stage_hunk() end,
+            "Stage Hunk",
+            opts = { noremap = true, silent = true },
+          },
+          ['<leader>hr'] = {
+            function() require('gitsigns').reset_hunk() end,
+            "Reset Hunk",
+            opts = { noremap = true, silent = true },
+          },
+          ['<leader>hS'] = {
+            function() require('gitsigns').stage_buffer() end,
+            "Stage Buffer",
+            opts = { noremap = true, silent = true },
+          },
+          ['<leader>hu'] = {
+            function() require('gitsigns').undo_stage_hunk() end,
+            "Undo Stage Hunk",
+            opts = { noremap = true, silent = true },
+          },
+          ['<leader>hR'] = {
+            function() require('gitsigns').reset_buffer() end,
+            "Reset Buffer",
+            opts = { noremap = true, silent = true },
+            },
+          ['<leader>hp'] = {
+            function() require('gitsigns').preview_hunk() end,
+            "Preview Hunk",
+            opts = { noremap = true, silent = true },
+          },
+          ['<leader>hb'] = {
+            function() require('gitsigns').blame_line({full=true}) end,
+            "Blame Line",
+            opts = { noremap = true, silent = true },
+          },
+          ['<leader>tb'] = {
+            function() require('gitsigns').toggle_current_line_blame() end,
+            "Toggle Current Line Blame",
+            opts = { noremap = true, silent = true },
+          },
+          ['<leader>hd'] = {
+            function() require('gitsigns').diffthis() end,
+            "Diff File Against Index",
+            opts = { noremap = true, silent = true },
+          },
+          ['<leader>hD'] = {
+            function() require('gitsigns').diffthis('~') end,
+            "Diff File Against Previous Commit",
+            opts = { noremap = true, silent = true },
+          },
+          ['<leader>td'] = {
+            function() require('gitsigns').toggle_deleted() end,
+            "Toggle Deleted",
+            opts = { noremap = true, silent = true },
+          },
+        },
+      },
+    },
+  },
+
 }
 
 return M
