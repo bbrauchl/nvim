@@ -406,60 +406,59 @@ M.plugin_mappings = {
     events = {
       on_attach = {
         n = {
-          ['<leader>hs'] = {
+          ['<leader>gs'] = {
             function() require('gitsigns').stage_hunk() end,
-            "Stage Hunk",
-            opts = { noremap = true, silent = true },
+            "[G]it [S]tage Hunk",
           },
-          ['<leader>hr'] = {
+          ['<leader>gr'] = {
             function() require('gitsigns').reset_hunk() end,
-            "Reset Hunk",
-            opts = { noremap = true, silent = true },
+            "[G]it [R]eset Hunk",
           },
-          ['<leader>hS'] = {
+          ['<leader>gS'] = {
             function() require('gitsigns').stage_buffer() end,
-            "Stage Buffer",
-            opts = { noremap = true, silent = true },
+            "[G]it [S]tage Buffer",
           },
-          ['<leader>hu'] = {
+          ['<leader>gu'] = {
             function() require('gitsigns').undo_stage_hunk() end,
-            "Undo Stage Hunk",
-            opts = { noremap = true, silent = true },
+            "[G]it [U]ndo Stage Hunk",
           },
-          ['<leader>hR'] = {
+          ['<leader>gR'] = {
             function() require('gitsigns').reset_buffer() end,
-            "Reset Buffer",
-            opts = { noremap = true, silent = true },
+            "[G]it [R]eset Buffer",
             },
-          ['<leader>hp'] = {
+          ['<leader>gp'] = {
             function() require('gitsigns').preview_hunk() end,
-            "Preview Hunk",
-            opts = { noremap = true, silent = true },
+            "[G]it [P]review Hunk",
           },
-          ['<leader>hb'] = {
+          ['<leader>gb'] = {
             function() require('gitsigns').blame_line({full=true}) end,
-            "Blame Line",
-            opts = { noremap = true, silent = true },
+            "[G]it [B]lame Line",
           },
-          ['<leader>tb'] = {
+          ['<leader>gB'] = {
             function() require('gitsigns').toggle_current_line_blame() end,
-            "Toggle Current Line Blame",
-            opts = { noremap = true, silent = true },
+            "Toggle [G]it Current Line [B]lame",
           },
-          ['<leader>hd'] = {
+          ['<leader>gdi'] = {
             function() require('gitsigns').diffthis() end,
             "Diff File Against Index",
-            opts = { noremap = true, silent = true },
           },
-          ['<leader>hD'] = {
+          ['<leader>gdc'] = {
             function() require('gitsigns').diffthis('~') end,
             "Diff File Against Previous Commit",
-            opts = { noremap = true, silent = true },
           },
-          ['<leader>td'] = {
+          ['<leader>gD'] = {
             function() require('gitsigns').toggle_deleted() end,
-            "Toggle Deleted",
-            opts = { noremap = true, silent = true },
+            "Toggle [G]it [D]eleted",
+          },
+        },
+        v = {
+          ['<leader>gs'] = {
+            function() require('gitsigns').stage_hunk {vim.fn.line('.'), vim.fn.line('v')} end,
+            '[G]it [S]tage Hunk',
+          },
+          ['<leader>gr'] = {
+            function() require('gitsigns').stage_hunk {vim.fn.line('.'), vim.fn.line('v')} end,
+            '[G]it [R]eset Hunk',
           },
         },
       },

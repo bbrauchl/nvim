@@ -1,7 +1,15 @@
 
 local M = {}
 
-local function load_mappings(mappings, mapping_opts, desc_prefix)
+local function format_prefix(plugin)
+  return ""
+end
+
+local function format_suffix(plugin)
+  return " (" .. plugin .. ")"
+end
+
+local function load_mappings(mappings, mapping_opts, desc_prefix, desc_suffix)
   vim.schedule(function()
 
     for mode, mode_values in pairs(mappings) do
@@ -12,8 +20,9 @@ local function load_mappings(mappings, mapping_opts, desc_prefix)
         mapping_info.opts, opts.mode = nil, nil
 
         desc_prefix = desc_prefix or ""
+        desc_suffix = desc_suffix or ""
         mapping_info[2] = mapping_info[2] or ""
-        opts.desc = desc_prefix .. mapping_info[2]
+        opts.desc = desc_prefix .. mapping_info[2] .. desc_suffix
         vim.keymap.set(mode, keybind, mapping_info[1], opts)
       end
     end
@@ -37,8 +46,9 @@ M.load_plugin_general_mappings = function(plugin, mapping_opts)
 
   -- Add a prefix to the descirption to make it more obvious where keybinds
   -- come from. Override the provided.
-  local prefix = '[' .. plugin .. ']'
-  load_mappings(general_mappings, mapping_opts, prefix)
+  local prefix = format_prefix(plugin)
+  local suffix = format_suffix(plugin)
+  load_mappings(general_mappings, mapping_opts, prefix, suffix)
 end
 
 M.load_all_plugin_general_mappings = function(mapping_opts)
@@ -49,8 +59,9 @@ M.load_all_plugin_general_mappings = function(mapping_opts)
     local general_mappings = plugin_mappings.general or {}
     -- Add a prefix based upon the plugin name. Force to overwrite
     -- anything that was provided in mapping_optss
-    local prefix = '[' .. plugin .. ']'
-    load_mappings(general_mappings, mapping_opts, prefix)
+    local prefix = format_prefix(plugin)
+    local suffix = format_suffix(plugin)
+    load_mappings(general_mappings, mapping_opts, prefix, suffix)
   end
 end
 
@@ -64,10 +75,11 @@ M.load_plugin_event_mappings = function(plugin, plugin_event, mapping_opts)
   local mappings = event_mappings[plugin_event] or {}
 
   -- Create the prefix based upon the plugin name for description
-  local prefix = '[' .. plugin .. ']'
   -- Plugin mappings that should only be loaded on some event, such as focusing
+  local prefix = format_prefix(plugin)
+  local suffix = format_suffix(plugin)
   -- a plugin window (like nvim_tree). These should never be run all at once.
-  load_mappings(mappings, mapping_opts, prefix)
+  load_mappings(mappings, mapping_opts, prefix, suffix)
 end
 
 M.load_local_mappings = function(mappings, mapping_opts)

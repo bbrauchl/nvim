@@ -22,6 +22,10 @@ local barbar_config = {
     -- insert_at_start = true,
     -- …etc.
   },
+  config = function(_, opts)
+    require('barbar').setup(opts)
+    require('utils').mappings.load_plugin_general_mappings('barbar')
+  end,
 }
 
 return barbar_config
