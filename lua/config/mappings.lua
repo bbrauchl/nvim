@@ -7,14 +7,6 @@ local M = {}
 
 M.general_mappings = {
   i = {
-    -- navigate within insert mode
-    -- ["<C-h>"] = { "<Left>", "Move left" },
-    -- ["<C-l>"] = {
-    --   "<Right>",
-    --   ":set listchars=eol:$,tab:>-,trail:~,extends:>,precedes:<Move right"
-    -- },
-    -- ["<C-j>"] = { "<Down>", "Move down" },
-    -- ["<C-k>"] = { "<Up>", "Move up" },
     ["<A-h>"] = { "<Left>", "Move left" },
     ["<A-l>"] = {
       "<Right>",
@@ -60,10 +52,6 @@ M.general_mappings = {
 
     -- [[ Navigation Keymaps ]]
     -- switch between windows
-    -- ["<C-h>"] = { "<C-w>h", "Window left" },
-    -- ["<C-l>"] = { "<C-w>l", "Window right" },
-    -- ["<C-j>"] = { "<C-w>j", "Window down" },
-    -- ["<C-k>"] = { "<C-w>k", "Window up" },
     ["<A-h>"] = { "<C-w>h", "Window left" },
     ["<A-l>"] = { "<C-w>l", "Window right" },
     ["<A-j>"] = { "<C-w>j", "Window down" },

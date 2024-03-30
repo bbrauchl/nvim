@@ -1,4 +1,3 @@
-
 local M = {}
 
 local function format_prefix(plugin)
@@ -12,10 +11,11 @@ end
 local function load_mappings(mappings, mapping_opts, desc_prefix, desc_suffix)
   vim.schedule(function()
 
+    mapping_opts = mapping_opts or {}
+
     for mode, mode_values in pairs(mappings) do
-      local default_opts = vim.tbl_deep_extend("force", {mode = mode}, mapping_opts or {})
       for keybind, mapping_info in pairs(mode_values) do
-        local opts = vim.tbl_deep_extend("force", default_opts, mapping_info.opts or {})
+        local opts = vim.tbl_deep_extend("force", mapping_opts, mapping_info.opts or {})
 
         mapping_info.opts, opts.mode = nil, nil
 

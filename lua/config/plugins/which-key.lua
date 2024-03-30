@@ -26,6 +26,11 @@ local which_key_config = { -- Useful plugin to show you pending keybinds.
       ['<leader>r'] = { name = '[R]ename', _ = 'which_key_ignore' },
       ['<leader>s'] = { name = '[S]earch', _ = 'which_key_ignore' },
       ['<leader>w'] = { name = '[W]orkspace', _ = 'which_key_ignore' },
+      ['<leader>g'] = { name = '[G]it', _ = 'which_key_ignore' },
+      ['<leader>gd'] = { name = '[G]it [D]iff', _ = 'which_key_ignore' },
+      ['<leader>f'] = { name = '[F]ind', _ = 'which_key_ignore' },
+      ['<leader>fl'] = { name = '[F]ind [L]sp', _ = 'which_key_ignore' },
+      ['<leader>b'] = { name = '[B]uffer', _ = 'which_key_ignore' },
     }
   end,
 }

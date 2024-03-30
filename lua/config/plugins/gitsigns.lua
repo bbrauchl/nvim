@@ -58,6 +58,9 @@ local gitsigns_config = { -- Adds git related signs to the gutter, as well as ut
       enable = false
     },
   },
+  config = function(_, opts)
+    require('gitsigns').setup(opts)
+  end,
 }
 
 return gitsigns_config
