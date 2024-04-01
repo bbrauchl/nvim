@@ -8,7 +8,7 @@
 local telescope_config = { -- Fuzzy Finder (files, lsp, etc)
   'nvim-telescope/telescope.nvim',
   event = 'VimEnter',
-  branch = '0.1.x',
+  -- branch = '0.1.x',
   dependencies = {
     'nvim-lua/plenary.nvim',
     { -- If encountering errors, see telescope-fzf-native README for installation instructions
@@ -25,6 +25,9 @@ local telescope_config = { -- Fuzzy Finder (files, lsp, etc)
       end,
     },
     { 'nvim-telescope/telescope-ui-select.nvim' },
+    {
+      'nvim-telescope/telescope-file-browser.nvim',
+    },
 
     -- Useful for getting pretty icons, but requires a Nerd Font.
     { 'nvim-tree/nvim-web-devicons', enabled = vim.g.have_nerd_font },
@@ -49,28 +52,54 @@ local telescope_config = { -- Fuzzy Finder (files, lsp, etc)
     -- Telescope picker. This is really useful to discover what Telescope can
     -- do as well as how to actually do it!
 
+    local fb_actions = require('telescope._extensions.file_browser.actions')
+    local actions = require('telescope.actions')
+    local actions_generate = require('telescope.actions.generate')
+
     -- [[ Configure Telescope ]]
     -- See `:help telescope` and `:help telescope.setup()`
-    require('telescope').setup {
+    require('telescope').setup({
       -- You can put your default mappings / updates / etc. in here
-      --  All the info you're looking for is in `:help telescope.setup()`
-      --
-      -- defaults = {
-      --   mappings = {
+      --  All the info you're looking for is in `:help telescope.setup()` defaults = { mappings = {
       --     i = { ['<c-enter>'] = 'to_fuzzy_refine' },
       --   },
       -- },
-      -- pickers = {}
-      extensions = {
-        ['ui-select'] = {
-          require('telescope.themes').get_dropdown(),
-        },
+      defaults = {
+	mappings = {
+	  n = {
+	    ["?"] = actions_generate.which_key {
+	      name_width = 25, -- typically leads to smaller floats
+	      keybind_width = 10, -- typically leads to smaller floats
+	      max_height = 0.5, -- increase potential maximum height
+	      separator = " -> ", -- change sep between mode, keybind, and name
+	      close_with_action = true, -- do not close float on action
+	    },
+	  },
+	},
       },
-    }
+      pickers = {
+      },
+      extensions = {
+	file_browser = {
+	  theme = "dropdown",
+	  hijack_netrw = true,
+	  mappings = {
+	    ["n"] = {
+	      ["o"] = actions.select_default,
+	      ["O"] = fb_actions.open,
+	    },
+	  },
+	},
+	["ui-select"] = {
+	  theme = "dropdown",
+	},
+      },
+    })
 
     -- Enable Telescope extensions if they are installed
     pcall(require('telescope').load_extension, 'fzf')
     pcall(require('telescope').load_extension, 'ui-select')
+    pcall(require('telescope').load_extension, 'file_browser')
 
     require('utils').mappings.load_plugin_general_mappings('telescope')
 

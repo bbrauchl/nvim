@@ -140,7 +140,7 @@ M.plugin_mappings = {
   ['nvim-tree'] = {
     general = {
       n = {
-        -- tjoggle
+        -- toggle
         ["<A-n>"] = { "<cmd> NvimTreeToggle <CR>", "Toggle nvimtree" },
 
         -- focus
@@ -177,6 +177,15 @@ M.plugin_mappings = {
   telescope = {
     general = {
       n = {
+        ['<A-n>'] = {
+          function()
+            require('telescope').extensions.file_browser.file_browser({
+              initial_mode = 'normal',
+            })
+          end,
+          'Open File Browser'
+        },
+
         -- See `:help telescope.builtin`
         ['<leader>/'] = {
           function() require('telescope.builtin').current_buffer_fuzzy_find() end,
@@ -279,7 +288,14 @@ M.plugin_mappings = {
       },
     },
     events = {
-
+      file_browser_attach = {
+        n = {
+          o = {
+            function() require('telescope').extensions.file_browser.actions.change_cwd() end,
+            'open folder'
+          },
+        },
+      },
     },
   },
 
