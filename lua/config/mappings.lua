@@ -57,6 +57,9 @@ M.general_mappings = {
     ["<A-j>"] = { "<C-w>j", "Window down" },
     ["<A-k>"] = { "<C-w>k", "Window up" },
 
+    ["<A-o>"] = { "<C-o>", "Go Back" },
+    ["<A-i>"] = { "<C-i>", "Go Back" },
+
     -- Allow moving the cursor through wrapped lines with j, k, <Up> and <Down>
     -- http://www.reddit.com/r/vim/comments/2k4cbr/problem_with_gj_and_gk/
     -- empty mode is same as using <cmd> :map
