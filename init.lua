@@ -156,7 +156,8 @@ local lazy_config = {
 }
 
 require('lazy').setup(
-  require('utils').plugins.assemble_plugin_config(lazy_config),
+  -- require('utils').plugins.assemble_plugin_config(lazy_config),
+  { import = "config.plugins" },
   require('utils').plugins.assemble_lazy_config()
 )
 
