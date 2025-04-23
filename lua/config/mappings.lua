@@ -190,7 +190,7 @@ M.plugin_mappings = {
         -- Find references for the word under your cursor.
         ['gr'] = {
           function() require('telescope.builtin').lsp_references() end,
-          '[LSP: G]oto [R]eferences',
+          'LSP: [G]oto [R]eferences',
         },
         -- Jump to the implementation of the word under your cursor.
         --  Useful when your language has ways of declaring types without an actual implementation.
