@@ -1,9 +1,10 @@
 local vscode_config = {
   'Mofiqul/vscode.nvim',
+  lazy = false,
   priority = 1000, -- Make sure to load this before all the other start plugins.
   opts = {
     -- Alternatively set style in setup
-    -- style = 'dark',
+    style = 'dark',
 
     -- Enable transparent background
     transparent = false,
@@ -32,7 +33,8 @@ local vscode_config = {
   },
   config = function(_, opts)
     require('vscode').setup(opts)
-    require('vscode').load('dark')
+    vim.o.background = 'dark'
+    vim.cmd.colorscheme 'vscode'
   end,
 }
 

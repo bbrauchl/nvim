@@ -12,3 +12,9 @@ spell/
 nvim-pack-lock.json
 
 .DS_Store
+
+# Runtime data when this checkout lives under stdpath('data').
+lazy/
+mason/
+site/
+nvim.log

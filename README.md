@@ -1,3 +1,52 @@
+# Bryan's Neovim configuration
+
+Rebased onto [Kickstart `80743df`](https://github.com/nvim-lua/kickstart.nvim/commit/80743df53d8f7058fc5b60e41f1081d11df9c880).
+Requires Neovim 0.12+ and the external dependencies listed below, including the
+Tree-sitter CLI. The original configuration is saved on
+`backup/pre-kickstart-20260921`.
+
+This fork keeps its modular Lazy configuration and nvim-cmp/LuaSnip completion
+rather than adopting upstream's plugin-manager and completion defaults. Use
+`:Lazy` to inspect plugins, `:Lazy update` to update them, and `:Lazy restore` to
+restore the checked-in `lazy-lock.json`. Upstream's `vim.pack` instructions below
+apply only to its unmodified configuration and optional example modules.
+
+VS Code **dark** is the startup theme. Tokyo Night and Catppuccin remain available
+in the existing theme picker without overriding startup colors.
+
+Custom keybindings live in `lua/config/mappings.lua`, with completion bindings in
+`lua/config/plugins/nvim-cmp.lua`. Their key combinations and completion behavior
+are preserved. Diagnostic navigation now uses `vim.diagnostic.jump`; LSP and Git
+attachment mappings apply to the relevant buffer. The mapping loader preserves
+options such as `expr` when mappings are loaded again.
+
+Language servers are registered using `vim.lsp.config` / `vim.lsp.enable` and
+installed through Mason. All 13 existing servers and the three formatter tools
+are retained. Inspect installation status with `:Mason`; external prerequisites
+such as Arduino CLI and HDL compilers still depend on your development setup.
+Treesitter uses its current `main` API with automatic parser installation.
+
+HDL Checker 0.7.4 does not build with the default Python 3.14 here. Its Mason
+virtual environment was installed with the existing `/usr/bin/python3.8`; keep
+that interpreter available. A future reinstall needs Python older than 3.12
+selected as `python3` for that installation.
+
+Installation verification on 2026-09-21: all 33 plugins and the base Treesitter
+parsers installed; startup, mapping preservation, completion, VS Code dark, and
+an actual Lua LSP attachment passed. Six npm-based servers (Pyright, JSON, YAML,
+Bash, Dockerfile, and Docker Compose) still need installation: Node/npm registry
+connections timed out and npm fell back to stale metadata. Once npm connectivity
+is restored, run `:MasonToolsInstall` to finish these installs. The other seven
+language servers and all three formatter tools are installed.
+
+Neovim normally reads `~/.config/nvim/init.lua`. If this repository is kept at
+`~/.local/share/nvim`, link `~/.config/nvim` to this checkout. Keep `lazy/`,
+`mason/`, and `site/` runtime directories out of version control.
+
+---
+
+The original upstream guide follows for reference.
+
 # kickstart.nvim
 
 ## Introduction

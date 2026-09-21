@@ -1,12 +1,10 @@
-
 -- Automatically close buffer to make it dissapear from bar when :q is ran
 vim.api.nvim_create_autocmd('QuitPre', {
   callback = function(tbl)
-
-    require('barbar.bbye').bdelete(tbl.bang, tbl.args, tbl.smods or tbl.mods)
+    require('barbar.bbye').bdelete(false, tbl.buf)
     -- require('barbar.bbye').delete('bdelete', false, tbl.buf)
   end,
-  group = vim.api.nvim_create_augroup('barbar_close_buf', {})
+  group = vim.api.nvim_create_augroup('barbar_close_buf', {}),
 })
 
 local barbar_config = {
@@ -24,7 +22,7 @@ local barbar_config = {
   },
   config = function(_, opts)
     require('barbar').setup(opts)
-    require('utils').mappings.load_plugin_general_mappings('barbar')
+    require('utils').mappings.load_plugin_general_mappings 'barbar'
   end,
 }
 

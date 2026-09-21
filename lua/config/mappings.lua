@@ -28,11 +28,11 @@ M.general_mappings = {
 
     -- [[ Diagnostic keymaps ]]
     ['[d'] = {
-      vim.diagnostic.goto_prev,
+      function() vim.diagnostic.jump { count = -1, float = true } end,
       opts = { desc = 'Go to previous diagnostic message' }
     },
     [']d'] = {
-      vim.diagnostic.goto_next,
+      function() vim.diagnostic.jump { count = 1, float = true } end,
       opts = { desc = 'Go to next diagnostic message' }
     },
     ['<leader>e'] = {

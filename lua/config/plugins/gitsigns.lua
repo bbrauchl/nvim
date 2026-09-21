@@ -22,15 +22,15 @@ local gitsigns_config = { -- Adds git related signs to the gutter, as well as ut
       -- changedelete = { text = '~' },
       -- untracked    = { text = '┆' },
     },
-    signcolumn = true,  -- Toggle with `:Gitsigns toggle_signs`
-    numhl      = false, -- Toggle with `:Gitsigns toggle_numhl`
-    linehl     = false, -- Toggle with `:Gitsigns toggle_linehl`
-    word_diff  = false, -- Toggle with `:Gitsigns toggle_word_diff`
+    signcolumn = true, -- Toggle with `:Gitsigns toggle_signs`
+    numhl = false, -- Toggle with `:Gitsigns toggle_numhl`
+    linehl = false, -- Toggle with `:Gitsigns toggle_linehl`
+    word_diff = false, -- Toggle with `:Gitsigns toggle_word_diff`
     watch_gitdir = {
-      follow_files = true
+      follow_files = true,
     },
     auto_attach = true,
-    on_attach = require('utils').mappings.load_plugin_event_mappings('gitsigns', 'on_attach'),
+    on_attach = function(bufnr) require('utils').mappings.load_plugin_event_mappings('gitsigns', 'on_attach', { buffer = bufnr }) end,
     attach_to_untracked = false,
     current_line_blame = false, -- Toggle with `:Gitsigns toggle_current_line_blame`
     current_line_blame_opts = {
@@ -52,15 +52,10 @@ local gitsigns_config = { -- Adds git related signs to the gutter, as well as ut
       style = 'minimal',
       relative = 'cursor',
       row = 0,
-      col = 1
-    },
-    yadm = {
-      enable = false
+      col = 1,
     },
   },
-  config = function(_, opts)
-    require('gitsigns').setup(opts)
-  end,
+  config = function(_, opts) require('gitsigns').setup(opts) end,
 }
 
 return gitsigns_config
